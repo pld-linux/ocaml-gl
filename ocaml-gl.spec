@@ -31,7 +31,7 @@ this library.
 %description -l pl
 Wi±zania dla OpenGL do wersji 1.4, z rozszerzeniami NV30 oraz ATI.
 Nazwy funkcji s± dok³adnie takie same jak w C, sta³e: GL_BLAH ->
-cgl_blah. Wi±zenie to nie jest szczególnie bezpieczne pod wzglêdem
+cgl_blah. Wi±zanie to nie jest szczególnie bezpieczne pod wzglêdem
 typów, ale jest dobre je¶li posiadasz ju¿ jakie¶ do¶wiadczenie z
 OpenGL w innych jêzykach programowania.
 
@@ -57,7 +57,7 @@ this library.
 %description devel -l pl
 Wi±zania dla OpenGL do wersji 1.4, z rozszerzeniami NV30 oraz ATI.
 Nazwy funkcji s± dok³adnie takie same jak w C, sta³e: GL_BLAH ->
-cgl_blah. Wi±zenie to nie jest szczególnie bezpieczne pod wzglêdem
+cgl_blah. Wi±zanie to nie jest szczególnie bezpieczne pod wzglêdem
 typów, ale jest dobre je¶li posiadasz ju¿ jakie¶ do¶wiadczenie z
 OpenGL w innych jêzykach programowania.
 
