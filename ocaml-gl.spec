@@ -71,15 +71,25 @@ tej biblioteki.
 %patch2
 
 %build
-%{__make} CC="%{__cc}" CFLAGS="%{rpmcflags} -fPIC" -C gl
-%{__make} CC="%{__cc}" CFLAGS="%{rpmcflags} -fPIC" -C hgl
-%{__make} CC="%{__cc}" CFLAGS="%{rpmcflags} -fPIC" X11LIBS="-L%{_prefix}/X11R6/%{_lib}" -C glfw
-%{__make} CC="%{__cc}" CFLAGS="%{rpmcflags} -fPIC" X11LIBS="-L%{_prefix}/X11R6/%{_lib}" -C glut
+%{__make} -C gl \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -fPIC"
+%{__make} -C hgl \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -fPIC"
+%{__make} -C glfw \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -fPIC" \
+	X11LIBS="-L/usr/X11R6/%{_lib}"
+%{__make} -C glut \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -fPIC" \
+	X11LIBS="-L/usr/X11R6/%{_lib}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/{gl,stublibs}
+
 install lib/*.cm[ixa]* lib/*.a $RPM_BUILD_ROOT%{_libdir}/ocaml/gl
 install lib/dll*.so $RPM_BUILD_ROOT%{_libdir}/ocaml/stublibs
 
@@ -121,5 +131,5 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/ocaml/gl
 %{_libdir}/ocaml/gl/*.cm[ixa]*
 %{_libdir}/ocaml/gl/*.a
-%{_examplesdir}/%{name}-%{version}
 %{_libdir}/ocaml/site-lib/*
+%{_examplesdir}/%{name}-%{version}
