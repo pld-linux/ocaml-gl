@@ -1,0 +1,46 @@
+--- glfw/Makefile~	2004-08-28 12:47:09.000000000 +0200
++++ glfw/Makefile	2004-08-28 12:54:49.000000000 +0200
+@@ -1,6 +1,7 @@
+ OCAMLCLANG = $(CC) -c -DGLFW_USE_XF86VIDMODE $(CFLAGS) -I/usr/X11R6/include
+ OCAMLC = ocamlc -c -thread -g
+ OCAMLOPT = ocamlopt -thread -c -unsafe -noassert
++X11LIBS = -L/usr/X11R6/lib
+ libs = glfw.cma glfw.cmxa libglfw.a dllglfw.so glfw.a
+ X11SRC = input.c enable.c fullscreen.c glext.c glfw_dyn.c init.c joystick.c window.c
+ OBJ = cglfw.o $(addprefix ./x11/,$(patsubst %.c,%.o,$(X11SRC)))
+@@ -15,9 +16,9 @@
+ 	cp $(libs) glfw.cmi ../lib
+ 
+ $(libs): glfw.cmx glfw.cmo $(OBJ)
+-	ocamlmklib -o glfw glfw.cmx -L/usr/X11R6/lib -lX11 -lXxf86vm -lXext
+-	ocamlmklib -o glfw glfw.cmo -L/usr/X11R6/lib -lX11 -lXxf86vm -lXext 
+-	ocamlmklib -o glfw $(OBJ) -L/usr/X11R6/lib -lX11 -lXxf86vm -lXext
++	ocamlmklib -o glfw glfw.cmx $(X11LIBS) -lX11 -lXxf86vm -lXext
++	ocamlmklib -o glfw glfw.cmo $(X11LIBS) -lX11 -lXxf86vm -lXext 
++	ocamlmklib -o glfw $(OBJ) $(X11LIBS) -lX11 -lXxf86vm -lXext
+ 
+ glfw.cmx glfw.cmo glfw.cmi: glfw.ml
+ 	$(OCAMLC) $<
+--- glut/Makefile~	2004-08-28 12:47:09.000000000 +0200
++++ glut/Makefile	2004-08-28 12:54:01.000000000 +0200
+@@ -1,6 +1,7 @@
+ OCAMLCLANG = ocamlc -thread -c -ccopt "$(CFLAGS) -I/usr/X11R6/include"
+ OCAMLC = ocamlc -c -thread -g
+ OCAMLOPT = ocamlopt -thread -c -unsafe -noassert
++X11LIBS = -L/usr/X11R6/lib
+ libs = camlglut.cma camlglut.cmxa libcamlglut.a dllcamlglut.so camlglut.a
+ out = $(addprefix ../lib/,$(libs) glut.cmi)
+ 
+@@ -10,9 +11,9 @@
+ 	cp $(libs) glut.cmi ../lib
+ 
+ $(libs): glut.cmx glut.cmo cglut.o
+-	ocamlmklib -o camlglut glut.cmx -L/usr/X11R6/lib -lglut
+-	ocamlmklib -o camlglut glut.cmo -L/usr/X11R6/lib -lglut
+-	ocamlmklib -o camlglut cglut.o -L/usr/X11R6/lib -lglut
++	ocamlmklib -o camlglut glut.cmx $(X11LIBS) -lglut
++	ocamlmklib -o camlglut glut.cmo $(X11LIBS) -lglut
++	ocamlmklib -o camlglut cglut.o $(X11LIBS) -lglut
+ 
+ cglut.o: cglut.c
+ 	$(OCAMLCLANG) $< -o $@
