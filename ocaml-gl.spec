@@ -6,7 +6,7 @@ Release:	2
 License:	BSD-like
 Group:		Libraries
 Vendor:		Nickolay Kolchin-Semyonov <snob@snob.spb.ru>
-Source0:	http://telia.dl.sourceforge.net/camlgl/ocamlgl-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/camlgl/ocamlgl-%{version}.tar.bz2
 # Source0-md5:	d4e98e57b5717c758afabb23a357181a
 Patch0:		%{name}-X11R6.patch
 Patch1:		%{name}-wait_for_event.patch
