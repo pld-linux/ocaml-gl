@@ -1,0 +1,62 @@
+diff -ur ocamlgl/gl/Makefile ocamlgl-/gl/Makefile
+--- ocamlgl/gl/Makefile	Mon Dec  9 04:29:08 2002
++++ ocamlgl-/gl/Makefile	Mon Feb  3 12:03:29 2003
+@@ -1,4 +1,4 @@
+-OCAMLCLANG = ocamlc -thread -c -ccopt "-O9 -fomit-frame-pointer -ffast-math -mcpu=pentium -march=pentium"
++OCAMLCLANG = ocamlc -thread -c -ccopt "$(CFLAGS) -I/usr/X11R6/include"
+ OCAMLC = ocamlc -c -thread -g
+ OCAMLOPT = ocamlopt -thread -c -unsafe -noassert
+ libs = gl.cma gl.cmxa libgl.a dllgl.so gl.a
+diff -ur ocamlgl/glfw/Makefile ocamlgl-/glfw/Makefile
+--- ocamlgl/glfw/Makefile	Mon Dec  9 04:44:22 2002
++++ ocamlgl-/glfw/Makefile	Mon Feb  3 12:02:08 2003
+@@ -1,4 +1,4 @@
+-OCAMLCLANG = gcc -c -I/usr/local/lib/ocaml -DGLFW_USE_XF86VIDMODE -O9 -fomit-frame-pointer -ffast-math -mcpu=pentium -march=pentium
++OCAMLCLANG = $(CC) -c -DGLFW_USE_XF86VIDMODE $(CFLAGS) -I/usr/X11R6/include
+ OCAMLC = ocamlc -c -thread -g
+ OCAMLOPT = ocamlopt -thread -c -unsafe -noassert
+ libs = glfw.cma glfw.cmxa libglfw.a dllglfw.so glfw.a
+@@ -15,9 +15,9 @@
+ 	cp $(libs) glfw.cmi ../lib
+ 
+ $(libs): glfw.cmx glfw.cmo $(OBJ)
+-	ocamlmklib -o glfw glfw.cmx -L/usr/X11/lib -lX11 -lXxf86vm -lXext
+-	ocamlmklib -o glfw glfw.cmo -L/usr/X11/lib -lX11 -lXxf86vm -lXext 
+-	ocamlmklib -o glfw $(OBJ) -L/usr/X11/lib -lX11 -lXxf86vm -lXext
++	ocamlmklib -o glfw glfw.cmx -L/usr/X11R6/lib -lX11 -lXxf86vm -lXext
++	ocamlmklib -o glfw glfw.cmo -L/usr/X11R6/lib -lX11 -lXxf86vm -lXext 
++	ocamlmklib -o glfw $(OBJ) -L/usr/X11R6/lib -lX11 -lXxf86vm -lXext
+ 
+ glfw.cmx glfw.cmo glfw.cmi: glfw.ml
+ 	$(OCAMLC) $<
+diff -ur ocamlgl/glut/Makefile ocamlgl-/glut/Makefile
+--- ocamlgl/glut/Makefile	Mon Dec  9 05:02:14 2002
++++ ocamlgl-/glut/Makefile	Mon Feb  3 12:02:08 2003
+@@ -1,4 +1,4 @@
+-OCAMLCLANG = ocamlc -thread -c -ccopt "-O9 -fomit-frame-pointer -ffast-math -mcpu=pentium -march=pentium"
++OCAMLCLANG = ocamlc -thread -c -ccopt "$(CFLAGS) -I/usr/X11R6/include"
+ OCAMLC = ocamlc -c -thread -g
+ OCAMLOPT = ocamlopt -thread -c -unsafe -noassert
+ libs = camlglut.cma camlglut.cmxa libcamlglut.a dllcamlglut.so camlglut.a
+@@ -10,9 +10,9 @@
+ 	cp $(libs) glut.cmi ../lib
+ 
+ $(libs): glut.cmx glut.cmo cglut.o
+-	ocamlmklib -o camlglut glut.cmx -lglut
+-	ocamlmklib -o camlglut glut.cmo -lglut
+-	ocamlmklib -o camlglut cglut.o -lglut
++	ocamlmklib -o camlglut glut.cmx -L/usr/X11R6/lib -lglut
++	ocamlmklib -o camlglut glut.cmo -L/usr/X11R6/lib -lglut
++	ocamlmklib -o camlglut cglut.o -L/usr/X11R6/lib -lglut
+ 
+ cglut.o: cglut.c
+ 	$(OCAMLCLANG) $< -o $@
+diff -ur ocamlgl/hgl/Makefile ocamlgl-/hgl/Makefile
+--- ocamlgl/hgl/Makefile	Wed Dec 11 08:02:37 2002
++++ ocamlgl-/hgl/Makefile	Mon Feb  3 12:04:03 2003
+@@ -1,4 +1,4 @@
+-OCAMLCLANG = ocamlc -thread -c -ccopt "-O9 -fomit-frame-pointer -ffast-math -mcpu=pentium -march=pentium"
++OCAMLCLANG = ocamlc -thread -c -ccopt "$(CFLAGS) -I/usr/X11R6/include"
+ OCAMLC = ocamlc -c -thread -g -I ../lib
+ OCAMLOPT = ocamlopt -thread -c -unsafe -noassert -I ../lib
+ libs = hgl.cma hgl.cmxa libhgl.a dllhgl.so hgl.a
