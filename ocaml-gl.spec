@@ -2,7 +2,7 @@ Summary:	OpenGL binding for OCaml
 Summary(pl):	Wi±zania OpenGL dla OCamla
 Name:		ocaml-gl
 Version:	0.9
-Release:	4
+Release:	5
 License:	BSD-like
 Group:		Libraries
 Vendor:		Nickolay Kolchin-Semyonov <snob@snob.spb.ru>
@@ -10,6 +10,7 @@ Source0:	http://dl.sourceforge.net/camlgl/ocamlgl-%{version}.tar.bz2
 # Source0-md5:	d4e98e57b5717c758afabb23a357181a
 Patch0:		%{name}-X11R6.patch
 Patch1:		%{name}-wait_for_event.patch
+Patch2:		%{name}-xlibs.patch
 URL:		http://camlgl.sourceforge.net/
 BuildRequires:	OpenGL-devel
 BuildRequires:	XFree86-devel
@@ -67,12 +68,13 @@ tej biblioteki.
 %setup -q -n ocamlgl
 %patch0 -p1
 %patch1 -p1
+%patch2
 
 %build
 %{__make} CC="%{__cc}" CFLAGS="%{rpmcflags} -fPIC" -C gl
 %{__make} CC="%{__cc}" CFLAGS="%{rpmcflags} -fPIC" -C hgl
-%{__make} CC="%{__cc}" CFLAGS="%{rpmcflags} -fPIC" -C glfw
-%{__make} CC="%{__cc}" CFLAGS="%{rpmcflags} -fPIC" -C glut
+%{__make} CC="%{__cc}" CFLAGS="%{rpmcflags} -fPIC" X11LIBS="-L%{_prefix}/X11R6/%{_lib}" -C glfw
+%{__make} CC="%{__cc}" CFLAGS="%{rpmcflags} -fPIC" X11LIBS="-L%{_prefix}/X11R6/%{_lib}" -C glut
 
 %install
 rm -rf $RPM_BUILD_ROOT
