@@ -1,0 +1,57 @@
+diff -ur ocamlgl/glfw/cglfw.c ocamlgl-/glfw/cglfw.c
+--- ocamlgl/glfw/cglfw.c	Sun Dec 15 10:03:54 2002
++++ ocamlgl-/glfw/cglfw.c	Thu Feb 13 21:00:35 2003
+@@ -205,6 +205,13 @@
+     CAMLreturn0;
+ }
+ 
++CAMLprim void ml_glfwWaitForEvent(value unit)
++{
++    CAMLparam0();
++    glfwWaitForEvent();
++    CAMLreturn0;
++}
++
+ CAMLprim value ml_glfwGetKey(value key)
+ {
+     CAMLparam1(key);
+diff -ur ocamlgl/glfw/glfw.ml ocamlgl-/glfw/glfw.ml
+--- ocamlgl/glfw/glfw.ml	Mon Dec  9 07:06:28 2002
++++ ocamlgl-/glfw/glfw.ml	Thu Feb 13 21:00:59 2003
+@@ -137,6 +137,7 @@
+ 
+ 
+ external poll_events: unit -> unit = "ml_glfwPollEvents"
++external wait_for_event: unit -> unit = "ml_glfwWaitForEvent"
+ external get_key: int -> bool = "ml_glfwGetKey"
+ external get_mouse_button: tmousebutton -> bool = "ml_glfwGetMouseButton"
+ external get_mouse_pos: unit -> int * int = "ml_glfwGetMousePos"
+diff -ur ocamlgl/glfw/x11/window.c ocamlgl-/glfw/x11/window.c
+--- ocamlgl/glfw/x11/window.c	Sun Dec  8 07:52:59 2002
++++ ocamlgl-/glfw/x11/window.c	Thu Feb 13 20:59:19 2003
+@@ -1543,6 +1543,25 @@
+ 
+ 
+ //========================================================================
++// glfwWaitForEvent() - Block until event is received and process it
++//========================================================================
++
++void glfwWaitForEvent( void )
++{
++    XEvent event;
++
++    // Is GLFW initialized?
++    if( !_glfwInitialised || !_glfwWin.Opened )
++    {
++        return;
++    }
++
++    XPeekEvent( _glfwWin.Dpy, &event );
++
++    glfwPollEvents();
++}
++
++//========================================================================
+ // glfwPollEvents() - Poll for new window and input events
+ //========================================================================
+ 
