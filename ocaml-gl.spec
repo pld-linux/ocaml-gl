@@ -2,7 +2,7 @@ Summary:	OpenGL binding for OCaml
 Summary(pl):	Wi±zania OpenGL dla OCamla
 Name:		ocaml-gl
 Version:	0.9
-Release:	5
+Release:	6
 License:	BSD-like
 Group:		Libraries
 Vendor:		Nickolay Kolchin-Semyonov <snob@snob.spb.ru>
