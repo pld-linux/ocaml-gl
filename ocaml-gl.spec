@@ -1,11 +1,11 @@
+%define		ocaml_ver	3.09.1
 Summary:	OpenGL binding for OCaml
 Summary(pl):	Wi±zania OpenGL dla OCamla
 Name:		ocaml-gl
 Version:	0.9
-Release:	8
+Release:	9
 License:	BSD-like
 Group:		Libraries
-Vendor:		Nickolay Kolchin-Semyonov <snob@snob.spb.ru>
 Source0:	http://dl.sourceforge.net/camlgl/ocamlgl-%{version}.tar.bz2
 # Source0-md5:	d4e98e57b5717c758afabb23a357181a
 Patch0:		%{name}-X11R6.patch
@@ -15,7 +15,7 @@ URL:		http://camlgl.sourceforge.net/
 BuildRequires:	OpenGL-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	glut-devel
-BuildRequires:	ocaml >= 3.07
+BuildRequires:	ocaml >= %{ocaml_ver}
 %requires_eq	ocaml-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
