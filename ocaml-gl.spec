@@ -1,6 +1,6 @@
 %define		ocaml_ver	1:3.09.2
 Summary:	OpenGL binding for OCaml
-Summary(pl):	Wi±zania OpenGL dla OCamla
+Summary(pl.UTF-8):   WiÄ…zania OpenGL dla OCamla
 Name:		ocaml-gl
 Version:	0.9
 Release:	11
@@ -28,19 +28,19 @@ experience from other languages.
 This package contains files needed to run bytecode executables using
 this library.
 
-%description -l pl
-Wi±zania dla OpenGL do wersji 1.4, z rozszerzeniami NV30 oraz ATI.
-Nazwy funkcji s± dok³adnie takie same jak w C, sta³e: GL_BLAH ->
-cgl_blah. Wi±zanie to nie jest szczególnie bezpieczne pod wzglêdem
-typów, ale jest dobre je¶li posiadasz ju¿ jakie¶ do¶wiadczenie z
-OpenGL w innych jêzykach programowania.
+%description -l pl.UTF-8
+WiÄ…zania dla OpenGL do wersji 1.4, z rozszerzeniami NV30 oraz ATI.
+Nazwy funkcji sÄ… dokÅ‚adnie takie same jak w C, staÅ‚e: GL_BLAH ->
+cgl_blah. WiÄ…zanie to nie jest szczegÃ³lnie bezpieczne pod wzglÄ™dem
+typÃ³w, ale jest dobre jeÅ›li posiadasz juÅ¼ jakieÅ› doÅ›wiadczenie z
+OpenGL w innych jÄ™zykach programowania.
 
-Pakiet ten zawiera binaria potrzebne do uruchamiania programów
-u¿ywaj±cych tej biblioteki.
+Pakiet ten zawiera binaria potrzebne do uruchamiania programÃ³w
+uÅ¼ywajÄ…cych tej biblioteki.
 
 %package devel
 Summary:	OpenGL binding for OCaml - development part
-Summary(pl):	Wi±zania OpenGL dla OCamla - cze¶æ programistyczna
+Summary(pl.UTF-8):   WiÄ…zania OpenGL dla OCamla - czeÅ›Ä‡ programistyczna
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %requires_eq	ocaml
@@ -54,14 +54,14 @@ experience from other languages.
 This package contains files needed to develop OCaml programs using
 this library.
 
-%description devel -l pl
-Wi±zania dla OpenGL do wersji 1.4, z rozszerzeniami NV30 oraz ATI.
-Nazwy funkcji s± dok³adnie takie same jak w C, sta³e: GL_BLAH ->
-cgl_blah. Wi±zanie to nie jest szczególnie bezpieczne pod wzglêdem
-typów, ale jest dobre je¶li posiadasz ju¿ jakie¶ do¶wiadczenie z
-OpenGL w innych jêzykach programowania.
+%description devel -l pl.UTF-8
+WiÄ…zania dla OpenGL do wersji 1.4, z rozszerzeniami NV30 oraz ATI.
+Nazwy funkcji sÄ… dokÅ‚adnie takie same jak w C, staÅ‚e: GL_BLAH ->
+cgl_blah. WiÄ…zanie to nie jest szczegÃ³lnie bezpieczne pod wzglÄ™dem
+typÃ³w, ale jest dobre jeÅ›li posiadasz juÅ¼ jakieÅ› doÅ›wiadczenie z
+OpenGL w innych jÄ™zykach programowania.
 
-Pakiet ten zawiera pliki niezbêdne do tworzenia programów u¿ywaj±cych
+Pakiet ten zawiera pliki niezbÄ™dne do tworzenia programÃ³w uÅ¼ywajÄ…cych
 tej biblioteki.
 
 %prep
