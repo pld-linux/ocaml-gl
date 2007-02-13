@@ -1,6 +1,6 @@
 %define		ocaml_ver	1:3.09.2
 Summary:	OpenGL binding for OCaml
-Summary(pl.UTF-8):   Wiązania OpenGL dla OCamla
+Summary(pl.UTF-8):	Wiązania OpenGL dla OCamla
 Name:		ocaml-gl
 Version:	0.9
 Release:	11
@@ -40,7 +40,7 @@ używających tej biblioteki.
 
 %package devel
 Summary:	OpenGL binding for OCaml - development part
-Summary(pl.UTF-8):   Wiązania OpenGL dla OCamla - cześć programistyczna
+Summary(pl.UTF-8):	Wiązania OpenGL dla OCamla - cześć programistyczna
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %requires_eq	ocaml
