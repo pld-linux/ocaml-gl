@@ -66,9 +66,9 @@ tej biblioteki.
 
 %prep
 %setup -q -n ocamlgl
-%patch0 -p1
-%patch1 -p1
-%patch2
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2
 
 %build
 %{__make} -C gl \
